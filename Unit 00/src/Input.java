@@ -1,10 +1,10 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Eli Morris	
+//Date - 1/31/2019
+//Class - Per 3
+//Lab  - 0c
 
 import static java.lang.System.*;
 import java.util.Scanner;

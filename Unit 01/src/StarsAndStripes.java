@@ -1,10 +1,10 @@
 //© A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Eli Morris
+//Date - 2/1/2019
+//Class - Per 3
+//Lab  - 1
 
 import static java.lang.System.*;
 
