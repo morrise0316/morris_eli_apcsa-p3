@@ -48,7 +48,7 @@ public class MPHRunner
 				test.print();
 			}
 		}
-		System.out.println("\n \nWould you like to see the default cases? /n"
+		System.out.println("\n \nWould you like to see the default cases? \n"
 				+ "Press 1 if you would like to see the default cases.");
 		int defCount = keyboard.nextInt();
 		if (defCount == 1) {
