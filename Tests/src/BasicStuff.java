@@ -7,10 +7,15 @@ public class BasicStuff {
 	}
 
 	public static void main(String[] args) {
-		double c  = Math.random() * 100;
-		System.out.print(c);
-
-
+		int num=11;
+		if(num>2) {
+			if(num<10) {
+				System.out.println(">2<10");
+			}
+		}
+		else {
+			System.out.println("<2");
+		}
 	}
 
 }
