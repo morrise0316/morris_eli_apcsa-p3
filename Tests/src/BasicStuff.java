@@ -7,14 +7,12 @@ public class BasicStuff {
 	}
 
 	public static void main(String[] args) {
-		int num=7;
-		
-		if(num>2) { }
-			
-		if(num<10)
-				System.out.println(">2<10");
+		String str = "notString";
+		if (str.length() >= 3 && str.substring(0, 3) == ("not")) {
+		   System.out.println(str);
+		  }
 		else
-			System.out.println("<2");
-	}
+		  System.out.println("not" + str);
+		}
 
 }
