@@ -12,14 +12,15 @@ public class TriangleFiveRunner
 	   char [] testLetters = {'C','A','B','X','Z'};
 	   TriangleFive test = new TriangleFive('Z' , 8);
 	   System.out.println(test);
-	   /*
+	   
 	    for (int numOfTest = 0; numOfTest < testLetters.length; numOfTest++)
 	    {
 	     test.setLetter(testLetters[numOfTest]);
 	     test.setAmount(testAmounts[numOfTest]);
+	     System.out.println(test);
 	     }
 	     
 	    
-	    */
+	    
 	}
 }
