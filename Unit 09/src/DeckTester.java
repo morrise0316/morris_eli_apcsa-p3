@@ -8,10 +8,9 @@ public class DeckTester {
 	 *	@param args is not used.
 	 */
 	public static void main(String[] args) {
-		Deck test1 = new Deck(new String[] {"A","B","C"},new String[] {"Giraffes","Lions"}, new int[] {2,1,6});
+		Deck test1 = new Deck(new String[] {"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"},new String[] {"Hearts","Diamonds","Clubs","Spades"}, 
+				new int[] {1,2,3,4,5,6,7,8,9,10,11,12,13});
 		System.out.println(test1);
-		int size2 = test1.size();
-		for(int z = 0; z < size2; z++)
-		System.out.println(test1.deal());
+		
 	}
 }
