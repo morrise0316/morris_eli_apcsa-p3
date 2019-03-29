@@ -14,6 +14,9 @@ public class Recursion234Runner
 		for (int x : runs)
 		{
 			System.out.println(RecursionFunOne.countEvenDigits(x));
-		}
+		} 
+		int[] lucky3Runs = {3,31332,134523,3113,13331,777337777};
+		for (int x : lucky3Runs)
+		System.out.println(RecursionFunThree.luckyThrees(x));
 	}
 }
