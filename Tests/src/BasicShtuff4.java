@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BasicShtuff4 {
@@ -8,16 +9,8 @@ public class BasicShtuff4 {
 	}
 
 	public static void main(String[] args) {
-		List<Integer> ray;
-
-		ray = new ArrayList<Integer>();
-		ray.add(23);
-
-		ray.add(0, 11);
-
-		ray.set(1,66);
-
-		System.out.println(ray);
+		String[] test1 = {"I ", "am ", "Eli."};
+		System.out.print();
 	}
 
 }
