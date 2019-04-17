@@ -7,12 +7,12 @@ import java.awt.Component;
 
 public class TheGame extends JFrame
 {
-	private static final int WIDTH = 800;
-	private static final int HEIGHT = 600;
+	private static final int WIDTH = 2400;
+	private static final int HEIGHT = 2000;
 
 	public TheGame()
 	{
-		super("PONG");
+		super("RAMBO WARS");
 		setSize(WIDTH,HEIGHT);
 
 		Pong game = new Pong();

@@ -13,13 +13,13 @@ class BlockTestOne
 		Block one = new Block();
 		out.println(one);
 
-		Block two = new Block(50,50,30,30);
+		Block two = new Block(150,150,90,90);
 		out.println(two);
 
-		Block three = new Block(350,350,15,15,Color.RED);
+		Block three = new Block(1050,1050,45,45,Color.RED);
 		out.println(three);
 
-		Block four = new Block(450,50,20,60, Color.GREEN);
+		Block four = new Block(1350,150,60,180, Color.GREEN);
 		out.println(four);
 		
 		out.println(one.equals(two));

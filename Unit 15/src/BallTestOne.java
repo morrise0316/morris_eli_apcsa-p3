@@ -12,20 +12,20 @@ class BallTestOne
 		Ball one = new Ball();
 		out.println(one);
 		
-		Ball two = new Ball(100,90);
+		Ball two = new Ball(300,270);
 		out.println(two);
 		
-		Ball three = new Ball(100,100,30,50);
+		Ball three = new Ball(300,300,90,150);
 		out.println(three);
 		
-		Ball four = new Ball(100,100,30,50,Color.BLUE);
+		Ball four = new Ball(300,300,90,150,Color.BLUE);
 		out.println(four);
 		
-		Ball five = new Ball(100,100,30,50,Color.BLUE,5,6);
+		Ball five = new Ball(300,300,90,150,Color.BLUE,15,18);
 		out.println(five);
 		
 									//x, y, wid, ht, color, xSpd, ySpd
-		Ball six = new Ball(100,100,30,50,Color.blue,5,6);
+		Ball six = new Ball(300,300,90,150,Color.blue,15,18);
 		out.println(six);		
 		
 		out.println(five.equals(four));		

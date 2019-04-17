@@ -12,16 +12,16 @@ class PaddleTestOne
 		Paddle one = new Paddle();
 		out.println(one);
 		
-		Paddle two = new Paddle(100,90);
+		Paddle two = new Paddle(300,270);
 		out.println(two);
 		
-		Paddle three = new Paddle(100,100,30);
+		Paddle three = new Paddle(300,300,90);
 		out.println(three);
 		
-		Paddle four = new Paddle(100,100,30,50,8);
+		Paddle four = new Paddle(300,300,90,150,24);
 		out.println(four);
 		
-		Paddle five = new Paddle(100,100,30,20, Color.GREEN,6);
+		Paddle five = new Paddle(300,300,90,60, Color.GREEN,18);
 		out.println(five);
 		
 		

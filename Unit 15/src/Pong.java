@@ -3,6 +3,7 @@
 //Name -
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Canvas;
@@ -11,7 +12,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import static java.lang.Character.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 import java.awt.event.ActionListener;
+
 
 public class Pong extends Canvas implements KeyListener, Runnable
 {
@@ -20,15 +23,23 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	private Paddle rightPaddle;
 	private boolean[] keys;
 	private BufferedImage back;
-
+	private int rightScore;
+	private int leftScore;
+	Random r = new Random();
+	private int initXSpd;
+	private int initYSpd;
 
 	public Pong()
 	{
 		//set up all variables related to the game
-
-
-
-
+		ball = new SpeedUpBall();
+		initXSpd  = ball.getXSpeed();
+		initYSpd = ball.getYSpeed();
+		ball.setColor(Color.BLUE);
+		ball.setSpeed(5,5);
+	
+		leftPaddle = new Paddle(120,570,60,240);
+		rightPaddle = new Paddle(2050,570,60,240);
 		keys = new boolean[4];
 
     
@@ -64,34 +75,100 @@ public class Pong extends Canvas implements KeyListener, Runnable
 
 
 		//see if ball hits left wall or right wall
-		if(!(ball.getX()>=10 && ball.getX()<=780))
+		if(!(ball.getX()>=30 && ball.getX()<=2100))
 		{
-			ball.setXSpeed(0);
-			ball.setYSpeed(0);
+			
+			
+			if(ball.getX() <= 200)
+				rightScore++;
+			else
+				leftScore++;
+			
+			Color oldColor = new Color(ball.getColor().getRGB());
+			ball.draw(graphToBack,Color.WHITE);
+			
+			ball.setXSpeed(initXSpd -1);
+			ball.setYSpeed(initYSpd -1);
+			
+			ball.setX(1070 + r.nextInt(400));
+			ball.setY(510 + r.nextInt(240));
+			
+			ball.draw(graphToBack,oldColor);
 		}
 
 		
 		//see if the ball hits the top or bottom wall 
-
+		if(!(ball.getY()>=30 && ball.getY()<=1350))
+		{
+			ball.setYSpeed(-ball.getYSpeed());
+			
+		}
 
 
 
 		//see if the ball hits the left paddle
 		
-		
-		
+		   if(  (ball.getX() <=  leftPaddle.getX() +leftPaddle.getWidth() + Math.abs(ball.getXSpeed()))
+         &&
+         ( ball.getY() >= leftPaddle.getY() &&
+         ball.getY() <= leftPaddle.getY() + leftPaddle.getHeight()  ||
+         ball.getY() + ball.getHeight() >= leftPaddle.getY() &&
+         ball.getY() + ball.getHeight()  < leftPaddle.getY() + leftPaddle.getHeight() )  )
+			{
+			   if(  ball.getX()   <=   leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(ball.getXSpeed()) )
+			       ball.setYSpeed(-ball.getYSpeed());
+			   else
+			       ball.setXSpeed(-ball.getXSpeed());
+			} 
 		//see if the ball hits the right paddle
-		
-		
-		
-
-
+		   if(  (ball.getX() >=  rightPaddle.getX()  - Math.abs(ball.getXSpeed()))
+			         &&
+			         ( ball.getY() >= rightPaddle.getY() &&
+			         ball.getY() <= rightPaddle.getY() + rightPaddle.getHeight()  ||
+			         ball.getY() + ball.getHeight() >= rightPaddle.getY() &&
+			         ball.getY() + ball.getHeight()  < rightPaddle.getY() + rightPaddle.getHeight() )  )
+						{
+						   if(  ball.getX()   <=   rightPaddle.getX() )
+						       ball.setYSpeed(-ball.getYSpeed());
+						   else
+						       ball.setXSpeed(-ball.getXSpeed());
+						}
 		//see if the paddles need to be moved
+		if(keys[0] == true && leftPaddle.getY() > 0)
+		{
+			//move left paddle up and draw it on the window
+			leftPaddle.moveUpAndDraw(graphToBack);
+		}
+		if(keys[1] == true && leftPaddle.getY() < 1130)
+		{
+			//move left paddle down and draw it on the window
+			leftPaddle.moveDownAndDraw(graphToBack);
 
+		}
+		if(keys[2] == true && rightPaddle.getY() > 0)
+		{
+			rightPaddle.moveUpAndDraw(graphToBack);
+		}
+		if(keys[3] == true && rightPaddle.getY() < 1130)
+		{
+			rightPaddle.moveDownAndDraw(graphToBack);
+		}
+		
+		
+		
+		
+		graphToBack.setFont(getFont().deriveFont(40f));
+		graphToBack.setColor(Color.WHITE);
+		graphToBack.drawString("Right Score: " + (rightScore-1),1000,1450);
+		
+		graphToBack.setColor(Color.BLUE);
+		graphToBack.drawString("Right Score: " + rightScore,1000,1450);
 
-
-
-
+		graphToBack.setColor(Color.WHITE);
+		graphToBack.drawString("Left Score: " + (leftScore-1),1010,1600);
+		
+		graphToBack.setColor(Color.RED);
+		graphToBack.drawString("Left Score: " + leftScore,1010,1600);
 
 
 

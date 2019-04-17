@@ -7,8 +7,8 @@ import java.awt.Component;
 
 public class Tester extends JFrame
 {
-	private static final int WIDTH = 800;
-	private static final int HEIGHT = 600;
+	private static final int WIDTH = 2400;
+	private static final int HEIGHT = 1800;
 
 	public Tester()
 	{
@@ -20,9 +20,9 @@ public class Tester extends JFrame
 		
 		getContentPane().add(new BallTestTwo());
 
-		//PaddleTestTwo padTest = new PaddleTestTwo();
-		//((Component)padTest).setFocusable(true);
-		//getContentPane().add(padTest);
+		PaddleTestTwo padTest = new PaddleTestTwo();
+		((Component)padTest).setFocusable(true);
+		getContentPane().add(padTest);
 
 		setVisible(true);
 
