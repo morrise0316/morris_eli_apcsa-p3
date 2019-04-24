@@ -8,10 +8,11 @@
  */
 public class PictureTester
 {
+  
   /** Method to test zeroBlue */
   public static void testZeroBlue()
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture(PictureExplorer.initPath + "beach.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
