@@ -94,7 +94,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
   
   /** the number system to use, 0 means starting at 0, 1 means starting at 1 */
   private int numberBase=0;
-  
+  public static String homePath = "C:\\Users\\Eli Morris\\eclipse-workspace\\Unit 16\\src\\images\\";
   public static String initPath = "C:\\Users\\morrise0316\\Documents\\GitHub\\morris_eli_apcsa-p3\\Unit 16\\src\\images\\";
   /**
    * Public constructor 
@@ -802,9 +802,10 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
   public static void main( String args[])
   {
 	  
-    Picture pix = new Picture("C:\\Users\\morrise0316\\Documents\\GitHub\\morris_eli_apcsa-p3\\Unit 16\\src\\solarReflector.jpg");
-    Picture smallPix = pix.scale(0.1,0.1);
-    smallPix.write(initPath + "smallSolarReflector.jpg");
+    // Picture pix = new Picture("C:\\Users\\morrise0316\\Documents\\GitHub\\morris_eli_apcsa-p3\\Unit 16\\src\\solarReflector.jpg");
+    Picture pix = new Picture("C:\\Users\\Eli Morris\\eclipse-workspace\\Unit 16\\src\\images\\SolarReflector.jpg");
+	Picture smallPix = pix.scale(0.6,0.6);
+    smallPix.write(homePath + "smallSolarReflector.jpg");
     smallPix.explore();
   }
   
