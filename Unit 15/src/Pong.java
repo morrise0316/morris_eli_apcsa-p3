@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
 
 public class Pong extends Canvas implements KeyListener, Runnable
 {
-	private Ball ball;
+	private BlinkyBall ball;
 	private Paddle leftPaddle;
 	private Paddle rightPaddle;
 	private boolean[] keys;
@@ -32,7 +32,7 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	public Pong()
 	{
 		//set up all variables related to the game
-		ball = new SpeedUpBall();
+		ball = new BlinkyBall();
 		initXSpd  = ball.getXSpeed();
 		initYSpd = ball.getYSpeed();
 		ball.setColor(Color.BLUE);

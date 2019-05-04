@@ -9,8 +9,12 @@ public class BasicShtuff4 {
 	}
 
 	public static void main(String[] args) {
-		String[] test1 = {"I ", "am ", "Eli."};
-		System.out.print();
+		ArrayList<int[]> xyList = new ArrayList<int[]>();
+		xyList.add(new int[] {4,3});
+		xyList.add(new int [] {4,234,43});
+		
+		for (int[] t : xyList)
+		System.out.print(Arrays.toString(t));
 	}
 
 }

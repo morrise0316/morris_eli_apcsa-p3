@@ -4,10 +4,12 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.awt.Canvas;
 
 public class BlockTestTwo extends Canvas
 {
+	private ArrayList<Block> tileList;
 	public BlockTestTwo()
 	{
 		setBackground(Color.WHITE);
