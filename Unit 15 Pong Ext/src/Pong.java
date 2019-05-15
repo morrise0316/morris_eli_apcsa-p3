@@ -28,6 +28,8 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	Random r = new Random();
 	private int initXSpd;
 	private int initYSpd;
+	private int initX;
+	private int initY;
 	private int levels;
 
 	public Pong()
@@ -37,6 +39,8 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		tileList = new ArrayList<Block>();
 		initXSpd  = ball.getXSpeed();
 		initYSpd = ball.getYSpeed();
+		initX = ball.getX();
+		initY = ball.getY();
 		ball.setColor(Color.BLUE);
 		BlockTestTwo.tileSet1(tileList);
 		levels = 0;
@@ -73,6 +77,12 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		if(tileList.isEmpty() && levels < 1)
 		{
 			BlockTestTwo.tileSet1(tileList);
+			ball.setSpeed(0, 0);
+			ball.draw(graphToBack, Color.WHITE);
+			ball.setX(initX);
+			ball.setY(initY);
+			ball.setSpeed(initXSpd, initYSpd);
+			ball.draw(graphToBack);
 			levels++;
 		}
 
@@ -143,17 +153,17 @@ public class Pong extends Canvas implements KeyListener, Runnable
 						   else
 						       ball.setXSpeed(-ball.getXSpeed());
 						} */
-		if (((ball.getY() + ball.getHeight() + ball.getYSpeed() >= pd.getY() && ball.getY()+ball.getHeight()  + ball.getYSpeed()
-		<= pd.getHeight()+pd.getY())) && ((ball.getX() + ball.getWidth() + ball.getXSpeed() >= pd.getX()) && ball.getX() + ball.getWidth() + ball.getXSpeed() <= pd.getX() + pd.getWidth()))
+		if (((ball.getY() + ball.getHeight() + Math.abs(ball.getYSpeed()) >= pd.getY() && ball.getY()+ball.getHeight()  + Math.abs(ball.getYSpeed())
+		<= pd.getHeight()+pd.getY())) && ((ball.getX() + ball.getWidth() + Math.abs(ball.getXSpeed()) >= pd.getX()) && ball.getX() + ball.getWidth() + Math.abs(ball.getXSpeed()) <= pd.getX() + pd.getWidth()))
 			ball.setYSpeed(-ball.getYSpeed());
-		else if((ball.getY() + ball.getYSpeed() <= pd.getY() + pd.getHeight() &&  ball.getY() + ball.getYSpeed()
-		>= pd.getY()) && ((ball.getX() + ball.getWidth() + ball.getXSpeed() >= pd.getX()) && ball.getX() + ball.getWidth() + ball.getXSpeed() <= pd.getX() + pd.getWidth()))
+		if((ball.getY() - Math.abs(ball.getYSpeed()) <= pd.getY() + pd.getHeight() &&  ball.getY() - Math.abs(ball.getYSpeed())
+		>= pd.getY()) && ((ball.getX() + ball.getWidth() + Math.abs(ball.getXSpeed()) >= pd.getX()) && ball.getX() + ball.getWidth() + Math.abs(ball.getXSpeed()) <= pd.getX() + pd.getWidth()))
 			ball.setYSpeed(-ball.getYSpeed());
-		else if (((ball.getX() + ball.getWidth() + ball.getXSpeed() >= pd.getX() && ball.getX()+ball.getWidth()  + ball.getXSpeed()
+		if (((ball.getX() + ball.getWidth() + Math.abs(ball.getXSpeed()) >= pd.getX() && ball.getX()+ball.getWidth()  + Math.abs(ball.getXSpeed())
 		<= pd.getWidth()+pd.getX())) &&((ball.getY() + ball.getHeight() + ball.getYSpeed() >= pd.getY()) && ball.getY() + ball.getHeight() + ball.getYSpeed() <= pd.getY() + pd.getHeight()))
 			ball.setXSpeed(-ball.getXSpeed());
-		else if((ball.getX() + ball.getXSpeed()  <= pd.getX() + pd.getWidth() &&  + ball.getX() + ball.getXSpeed()
-		>= pd.getX()) &&((ball.getY() + ball.getHeight() + ball.getYSpeed() >= pd.getY()) && ball.getY() + ball.getHeight() + ball.getYSpeed() <= pd.getY() + pd.getHeight()))
+		if((ball.getX() - Math.abs(ball.getXSpeed())  <= pd.getX() + pd.getWidth() &&  + ball.getX() - Math.abs(ball.getXSpeed())
+		>= pd.getX()) &&((ball.getY() + ball.getHeight() + Math.abs(ball.getYSpeed()) >= pd.getY()) && ball.getY() + ball.getHeight() + Math.abs(ball.getYSpeed()) <= pd.getY() + pd.getHeight()))
 			ball.setXSpeed(-ball.getXSpeed());
 		
 		//see if the paddles need to be moved
