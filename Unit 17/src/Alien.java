@@ -68,6 +68,7 @@ public class Alien extends MovingThing
 	   		break;
 	   case("LEFT"):
 		   if(getX() - speed > 0) setX(getX()-speed);
+	   		break;
 	   }
 	}
 

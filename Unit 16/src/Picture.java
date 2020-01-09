@@ -98,6 +98,110 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void encode(Picture pic) //pic is the Picture/message hidden in this Picture
+  {
+	  int matrixSize = 5; //note that the code is based on matrixSize=5, or else the code needs to be modified to work as intended
+	  Pixel[][] pixs = pic.getPixels2D();
+	  int[][][] black = new int[pixs.length][pixs.length/matrixSize][matrixSize];
+	  int[][][] setBlack = new int[pixs.length][pixs.length/matrixSize][matrixSize];
+	  	for (int x = 0; x < pixs.length; x++)
+	  		for (int y = 0; y < pixs.length/matrixSize; y++)
+	  			for (int z = 0; z < matrixSize; z++)
+	  			{
+	  				int col = matrixSize*y + z;
+	  				if (pixs[x][col].getRed() <=20 && pixs[x][col].getGreen() <=20 && pixs[x][col].getBlue() <=20)
+	  					black[x][y][z] = 2;
+	  				else
+	  					black[x][y][z] = 1;
+	  			}
+	  	RandomMatrix m = new RandomMatrix(matrixSize,542423665);
+	  	int[][] multM = m.getMatrix();
+	  	for (int a = 0; a < black.length; a++)
+	  		for (int b = 0; b < black[0].length; b++)
+	  			for (int c = 0; c < black[0][0].length; c++)
+	  			{
+	  				int setBlk = 0;
+	  				for (int d = 0; d < matrixSize; d++)
+	  				{
+	  					setBlk += multM[c][d] * black[a][b][d];
+	  				}
+	  				setBlack[a][b][c] = setBlk;
+	  			}
+	  	for (int a = 0; a < black.length; a++)
+	  		for (int b = 0; b < black[0].length; b++)
+	  			for (int c = 0; c < black[0][0].length; c++)
+	  			{
+	  				black[a][b][c] = setBlack[a][b][c];
+	  			}
+	  	Pixel[][] pixels = this.getPixels2D();
+	  	for (Pixel[] rowArray : pixels)
+	    {
+	      for (Pixel pixelObj : rowArray)
+	      {
+	        pixelObj.setRed(pixelObj.getRed()-(pixelObj.getRed()%matrixSize));
+	      }
+	    } 
+	  	for (int x = 0; x < black.length; x++)
+	  		for (int y = 0; y < black[0].length; y++)
+	  			for (int z = 0; z < black[0][0].length; z++)
+	  			{
+	  				int col = matrixSize*y + z;
+	  				pixels[x][col].setRed(pixels[x][col].getRed() + black[x][y][z]);
+	  				
+	  			}
+  }
+  public void decode()
+  {
+	  int matrixSize = 5;//note that the code is based on a fixed matrixSize of 5, otherwise code must be modified
+	  Pixel[][] pixels = this.getPixels2D();
+	  int[][][] black = new int[pixels.length][pixels.length/matrixSize][matrixSize];
+	  int[][][] setBlack = new int[pixels.length][pixels.length/matrixSize][matrixSize];
+	  RandomMatrix n = new RandomMatrix(matrixSize,542423665); //seed must be the same as encode
+	  int[][] adj = new int[matrixSize][matrixSize];
+	  n.getAdj(n.getMatrix(), adj);
+	  for (int x = 0; x < black.length; x++)
+	  		for (int y = 0; y < black[0].length; y++)
+	  			for (int z = 0; z < black[0][0].length; z++)
+	  			{
+	  				int col = matrixSize*y + z;
+	  				black[x][y][z] = pixels[x][col].getRed() % 5;
+	  			}
+	  for (int a = 0; a < black.length; a++)
+	  		for (int b = 0; b < black[0].length; b++)
+	  			for (int c = 0; c < black[0][0].length; c++)
+	  			{
+	  				int setBlk = 0;
+	  				for (int d = 0; d < matrixSize; d++)
+	  				{
+	  					setBlk += adj[c][d] * black[a][b][d];
+	  				}
+	  				setBlack[a][b][c] = setBlk;
+	  			}
+	  	for (int a = 0; a < black.length; a++)
+	  		for (int b = 0; b < black[0].length; b++)
+	  			for (int c = 0; c < black[0][0].length; c++)
+	  			{
+	  				black[a][b][c] = setBlack[a][b][c];
+	  			}
+	  	for (int a = 0; a < black.length; a++)
+	  		for (int b = 0; b < black[0].length; b++)
+	  			for (int c = 0; c < black[0][0].length; c++)
+	  			{
+	  				int col = matrixSize*b + c;
+	  				if(black[a][b][c] == 2)
+	  					pixels[a][col].setColor(Color.BLACK);
+	  				else if(black[a][b][c]==1)
+	  					pixels[a][col].setColor(Color.WHITE);
+	  			}
+	  	for (Pixel[] rowArray : pixels)
+	    {
+	      for (Pixel pixelObj : rowArray)
+	      {
+	        if(pixelObj.getRed() != 0)
+	        	pixelObj.setColor(Color.WHITE);
+	      }
+	    } 
+  }
   public void keepOnlyBlue()
   {
 	  Pixel[][] pixels = this.getPixels2D();

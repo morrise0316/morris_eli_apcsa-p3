@@ -8,7 +8,11 @@
  */
 public class PictureTester
 {
-  
+  public static void testApple()
+  {
+	  Picture apple = new Picture(PictureExplorer.homePath + "apple_icon.jpg");
+	  apple.explore();
+  }
   /** Method to test zeroBlue */
   public static void testZeroBlue()
   {
@@ -19,6 +23,27 @@ public class PictureTester
 	    bigBeach.explore();
 	    bigBeach.zeroBlue();
 	    bigBeach.explore();
+  }
+  /**Method to test encode*/
+  public static void testEncode()
+  {
+	  Picture beach = new Picture(PictureExplorer.homePath + "beach.jpg");
+	  Picture apple = new Picture(PictureExplorer.homePath + "apple_icon.jpg");
+	  beach.explore();
+	  apple.explore();
+	  beach.encode(apple);
+	  beach.explore();
+  }
+  
+  public static void testDecode()
+  {
+	  Picture beach = new Picture(PictureExplorer.homePath + "beach.jpg");
+	  Picture apple = new Picture(PictureExplorer.homePath + "apple_icon.jpg");
+	  beach.encode(apple);
+	  
+	  beach.explore();
+	  beach.decode();
+	  beach.explore();
   }
   /**Method to test keepOnlyBlue */
   public static void testKeepOnlyBlue()
@@ -177,7 +202,10 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
+	//testApple();
     //testZeroBlue();
+	//testEncode();
+	//testDecode();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();

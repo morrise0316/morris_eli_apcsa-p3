@@ -40,12 +40,13 @@ public class AlienHorde
 	{
 		for (int i = 0; i < aliens.size(); i++)
 			aliens.get(i).draw(window);
+		moveEmAll();
 	}
 
 	public void moveEmAll()
 	{
 		for(int i = 0; i < aliens.size(); i++)
-		{
+		{ /*
 			if (aliens.get(i).getX() + aliens.get(i).getWidth() + aliens.get(i).getSpeed() > 750)
 			{
 				moveRight.set(i, false);
@@ -59,7 +60,8 @@ public class AlienHorde
 			if(moveRight.get(i).booleanValue() == true)
 				aliens.get(i).move("RIGHT");
 			else
-				aliens.get(i).move("LEFT");
+				aliens.get(i).move("LEFT"); */
+			aliens.get(i).move("RIGHT");
 		}
 
 	}
